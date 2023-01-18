@@ -8,20 +8,19 @@ public class Op {
     static ScriptEngine engine = mgr.getEngineByName("JavaScript");
 
     char[] Oper = {'+', '-', '*', '/'};
-    int OpLength = 4;
     String retval = "";
 
     public void getmodels(int[][] Cbm){
 
         int currentVal;
-        int i, j, k, l;
+        byte i, j, k, l;
         String current;
 
         try{
             for(i = 0; i < 24; i++){
-                for(j = 0; j < OpLength; j++){
-                    for(k = 0; k < OpLength; k++){
-                        for(l = 0; l < OpLength; l++){
+                for(j = 0; j < 4; j++){
+                    for(k = 0; k < 4; k++){
+                        for(l = 0; l < 4; l++){
                             try{
                                 current = String.format("%d %c %d %c %d %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
                                 currentVal = (Integer) engine.eval(current);
