@@ -25,7 +25,7 @@ public class Op {
                         for(l = 0; l < OpLength; l++){
                             try{
                                 current = String.format("%d %c %d %c %d %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = Integer.parseInt(engine.eval(current).toString());
+                                currentVal = (Integer) engine.eval(current);
                                 if (currentVal == 24){
                                     retval += "s" + current;
                                     break;
@@ -34,7 +34,7 @@ public class Op {
                             
                             try{
                                 current = String.format("(%d %c %d) %c %d %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = Integer.parseInt(engine.eval(current).toString());
+                                currentVal = (Integer) engine.eval(current);
                                 if (currentVal == 24){
                                     retval += "s" + current;
                                     break;
@@ -43,7 +43,7 @@ public class Op {
 
                             try{
                                 current = String.format("%d %c (%d %c %d) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = Integer.parseInt(engine.eval(current).toString());
+                                currentVal = (Integer) engine.eval(current);
                                 if (currentVal == 24){
                                     retval += "s" + current;
                                     break;
@@ -52,7 +52,7 @@ public class Op {
                                 
                             try{
                                 current = String.format("%d %c %d %c (%d %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = Integer.parseInt(engine.eval(current).toString());
+                                currentVal = (Integer) engine.eval(current);
                                 if (currentVal == 24){
                                     retval += "s" + current;
                                     break;
@@ -61,7 +61,7 @@ public class Op {
 
                             try{
                                 current = String.format("(%d %c %d) %c (%d %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = Integer.parseInt(engine.eval(current).toString());
+                                currentVal = (Integer) engine.eval(current);
                                 if (currentVal == 24){
                                     retval += "s" + current;
                                     break;
@@ -70,7 +70,7 @@ public class Op {
 
                             try{
                                 current = String.format("(%d %c %d %c %d) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = Integer.parseInt(engine.eval(current).toString());
+                                currentVal = (Integer) engine.eval(current);
                                 if (currentVal == 24){
                                     retval += "s" + current;
                                     break;
@@ -79,7 +79,7 @@ public class Op {
 
                             try{
                                 current = String.format("((%d %c %d) %c %d) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = Integer.parseInt(engine.eval(current).toString());
+                                currentVal = (Integer) engine.eval(current);
                                 if (currentVal == 24){
                                     retval += "s" + current;
                                     break;
@@ -88,7 +88,7 @@ public class Op {
 
                             try{
                                 current = String.format("(%d %c (%d %c %d)) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = Integer.parseInt(engine.eval(current).toString());
+                                currentVal = (Integer) engine.eval(current);
                                 if (currentVal == 24){
                                     retval += "s" + current;
                                     break;
@@ -97,7 +97,7 @@ public class Op {
 
                             try{
                                 current = String.format("%d %c (%d %c %d %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = Integer.parseInt(engine.eval(current).toString());
+                                currentVal = (Integer) engine.eval(current);
                                 if (currentVal == 24){
                                     retval += "s" + current;
                                     break;
@@ -106,7 +106,7 @@ public class Op {
 
                             try{
                                 current = String.format("%d %c ((%d %c %d) %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = Integer.parseInt(engine.eval(current).toString());
+                                currentVal = (Integer) engine.eval(current);
                                 if (currentVal == 24){
                                     retval += "s" + current;
                                     break;
@@ -115,7 +115,7 @@ public class Op {
 
                             try{
                                 current = String.format("%d %c (%d %c (%d %c %d))", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = Integer.parseInt(engine.eval(current).toString());
+                                currentVal = (Integer) engine.eval(current);
                                 if (currentVal == 24){
                                     retval += "s" + current;
                                     break;
@@ -139,7 +139,7 @@ public class Op {
             retval = retval.replace("11", "J");
             retval = retval.replace("12", "Q");
             retval = retval.replace("13", "K");
-            retval = retval.replace("1", "A");
+            retval = retval.replace("1 ", "A ");
             String[] output = retval.split("s");
             System.out.println(String.format("Terdapat %d solusi:", output.length-1));
 
