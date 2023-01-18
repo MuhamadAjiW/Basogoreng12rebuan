@@ -2,6 +2,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 
 public class Op {
     static ScriptEngineManager mgr = new ScriptEngineManager();
@@ -10,122 +11,165 @@ public class Op {
     char[] Oper = {'+', '-', '*', '/'};
     String retval = "";
 
-    public void getmodels(int[][] Cbm){
+    public void getmodels(int[][] Cbm) throws ScriptException{
 
-        int currentVal;
         byte i, j, k, l;
         String current;
-
-        try{
             for(i = 0; i < 24; i++){
                 for(j = 0; j < 4; j++){
                     for(k = 0; k < 4; k++){
                         for(l = 0; l < 4; l++){
-                            try{
-                                current = String.format("%d %c %d %c %d %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = (Integer) engine.eval(current);
-                                if (currentVal == 24){
-                                    retval += "s" + current;
-                                    break;
-                                }
-                            } catch(Exception e){}
-                            
-                            try{
-                                current = String.format("(%d %c %d) %c %d %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = (Integer) engine.eval(current);
-                                if (currentVal == 24){
-                                    retval += "s" + current;
-                                    break;
-                                }
-                            } catch(Exception e){}
-
-                            try{
-                                current = String.format("%d %c (%d %c %d) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = (Integer) engine.eval(current);
-                                if (currentVal == 24){
-                                    retval += "s" + current;
-                                    break;
-                                }
-                            } catch(Exception e){}
+                            if(j != 3 && k != 3 && l != 3){
+                                    current = String.format("%d %c %d %c %d %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                    current = String.format("(%d %c %d) %c %d %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                    current = String.format("%d %c (%d %c %d) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                    current = String.format("%d %c %d %c (%d %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                    current = String.format("(%d %c %d) %c (%d %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                    current = String.format("(%d %c %d %c %d) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                    current = String.format("((%d %c %d) %c %d) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                    current = String.format("(%d %c (%d %c %d)) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                    current = String.format("%d %c (%d %c %d %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                    current = String.format("%d %c ((%d %c %d) %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                    current = String.format("%d %c (%d %c (%d %c %d))", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                            }
+                            else{
+                                try{
+                                    current = String.format("%d %c %d %c %d %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                } catch(ClassCastException e){}
                                 
-                            try{
-                                current = String.format("%d %c %d %c (%d %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = (Integer) engine.eval(current);
-                                if (currentVal == 24){
-                                    retval += "s" + current;
-                                    break;
-                                }
-                            } catch(Exception e){}
-
-                            try{
-                                current = String.format("(%d %c %d) %c (%d %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = (Integer) engine.eval(current);
-                                if (currentVal == 24){
-                                    retval += "s" + current;
-                                    break;
-                                }
-                            } catch(Exception e){}
-
-                            try{
-                                current = String.format("(%d %c %d %c %d) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = (Integer) engine.eval(current);
-                                if (currentVal == 24){
-                                    retval += "s" + current;
-                                    break;
-                                }
-                            } catch(Exception e){}
-
-                            try{
-                                current = String.format("((%d %c %d) %c %d) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = (Integer) engine.eval(current);
-                                if (currentVal == 24){
-                                    retval += "s" + current;
-                                    break;
-                                }
-                            } catch(Exception e){}
-
-                            try{
-                                current = String.format("(%d %c (%d %c %d)) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = (Integer) engine.eval(current);
-                                if (currentVal == 24){
-                                    retval += "s" + current;
-                                    break;
-                                }
-                            } catch(Exception e){}
-
-                            try{
-                                current = String.format("%d %c (%d %c %d %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = (Integer) engine.eval(current);
-                                if (currentVal == 24){
-                                    retval += "s" + current;
-                                    break;
-                                }
-                            } catch(Exception e){}
-
-                            try{
-                                current = String.format("%d %c ((%d %c %d) %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = (Integer) engine.eval(current);
-                                if (currentVal == 24){
-                                    retval += "s" + current;
-                                    break;
-                                }
-                            } catch(Exception e){}
-
-                            try{
-                                current = String.format("%d %c (%d %c (%d %c %d))", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                                currentVal = (Integer) engine.eval(current);
-                                if (currentVal == 24){
-                                    retval += "s" + current;
-                                    break;
-                                }
-                            } catch(Exception e){}
+                                try{
+                                    current = String.format("(%d %c %d) %c %d %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                } catch(ClassCastException e){}
+    
+                                try{
+                                    current = String.format("%d %c (%d %c %d) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                } catch(ClassCastException e){}
+                                    
+                                try{
+                                    current = String.format("%d %c %d %c (%d %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                } catch(ClassCastException e){}
+    
+                                try{
+                                    current = String.format("(%d %c %d) %c (%d %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                } catch(ClassCastException e){}
+    
+                                try{
+                                    current = String.format("(%d %c %d %c %d) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                } catch(ClassCastException e){}
+    
+                                try{
+                                    current = String.format("((%d %c %d) %c %d) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                } catch(ClassCastException e){}
+    
+                                try{
+                                    current = String.format("(%d %c (%d %c %d)) %c %d", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                } catch(ClassCastException e){}
+    
+                                try{
+                                    current = String.format("%d %c (%d %c %d %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                } catch(ClassCastException e){}
+    
+                                try{
+                                    current = String.format("%d %c ((%d %c %d) %c %d)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                } catch(ClassCastException e){}
+    
+                                try{
+                                    current = String.format("%d %c (%d %c (%d %c %d))", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
+                                    if ((Integer) engine.eval(current) == 24){
+                                        retval += "s" + current;
+                                        break;
+                                    }
+                                } catch(ClassCastException e){}
+                            }
+                            
                         }
                     }
                 }
             }
-        } catch(Exception e){
-            System.out.println(e);
-        }
     }
 
 
