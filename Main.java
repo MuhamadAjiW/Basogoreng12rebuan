@@ -29,14 +29,20 @@ public class Main{
                         do{
                             inputLine = in.nextLine();
                             parsedInput = inputLine.split(" ");
-                            try {
-                                input = Integer.parseInt(parsedInput[0]);
-                            } catch (NumberFormatException e) {
-                                input = 0;
+                            if(parsedInput.length == 1){
+                                try {
+                                    input = Integer.parseInt(parsedInput[0]);
+                                } catch (NumberFormatException e) {
+                                    input = 0;
+                                }
+                                if (input <= 0 || input > 3) {
+                                    System.out.println("Input tidak valid");
+                                } 
                             }
-                            if (input <= 0 || input > 3) {
+                            else{
+                                input = 0;
                                 System.out.println("Input tidak valid");
-                            } 
+                            }
                         } while (input <= 0 || input > 3);
 
                         switch(input){
@@ -74,14 +80,22 @@ public class Main{
                             do{
                                 inputLine = in.nextLine();
                                 parsedInput = inputLine.split(" ");
-                                try {
-                                    input = Integer.parseInt(parsedInput[0]);
-                                } catch (NumberFormatException e) {
-                                    input = 0;
+                                
+                                if(parsedInput.length == 1){
+                                    try {
+                                        input = Integer.parseInt(parsedInput[0]);
+                                    } catch (NumberFormatException e) {
+                                        input = 0;
+                                    }
+                                    if (input <= 0 || input > 2) {
+                                        System.out.println("Input tidak valid");
+                                    } 
                                 }
-                                if (input <= 0 || input > 2) {
+                                else{
+                                    input = 0;
                                     System.out.println("Input tidak valid");
-                                } 
+                                }
+                                
                             } while (input <= 0 || input > 2);
 
 
