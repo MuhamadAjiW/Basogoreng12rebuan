@@ -46,64 +46,53 @@ public class Op {
 
         byte i, j, k, l;
         String current;
-            for(i = 0; i < 24; i++){
+            for(i = 0; i < Cbm.length; i++){
                 for(j = 0; j < 4; j++){
                     for(k = 0; k < 4; k++){
                         for(l = 0; l < 4; l++){
-                            current = String.format("%f %c %f %c %f %c %f", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
                             if (eval4(Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]) == 24){
+                                current = String.format("%f %c %f %c %f %c %f", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
                                 retval += "s" + current;
-                                break;
                             }
-                            current = String.format("(%f %c %f) %c %f %c %f", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                            if (eval3(eval2(Cbm[i][0], Oper[j], Cbm[i][1]), Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]) == 24){
+                            else if (eval3(eval2(Cbm[i][0], Oper[j], Cbm[i][1]), Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]) == 24){
+                                current = String.format("(%f %c %f) %c %f %c %f", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
                                 retval += "s" + current;
-                                break;
                             }
-                            current = String.format("%f %c (%f %c %f) %c %f", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                            if (eval3(Cbm[i][0], Oper[j], eval2(Cbm[i][1], Oper[k], Cbm[i][2]), Oper[l], Cbm[i][3]) == 24){
+                            else if (eval3(Cbm[i][0], Oper[j], eval2(Cbm[i][1], Oper[k], Cbm[i][2]), Oper[l], Cbm[i][3]) == 24){
+                                current = String.format("%f %c (%f %c %f) %c %f", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
                                 retval += "s" + current;
-                                break;
                             }
-                            current = String.format("%f %c %f %c (%f %c %f)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                            if (eval3(Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], eval2(Cbm[i][2], Oper[l], Cbm[i][3])) == 24){
+                            else if (eval3(Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], eval2(Cbm[i][2], Oper[l], Cbm[i][3])) == 24){
+                                current = String.format("%f %c %f %c (%f %c %f)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
                                 retval += "s" + current;
-                                break;
                             }
-                            current = String.format("(%f %c %f) %c (%f %c %f)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                            if (eval2(eval2(Cbm[i][0], Oper[j], Cbm[i][1]), Oper[k], eval2(Cbm[i][2], Oper[l], Cbm[i][3])) == 24){
+                            else if (eval2(eval2(Cbm[i][0], Oper[j], Cbm[i][1]), Oper[k], eval2(Cbm[i][2], Oper[l], Cbm[i][3])) == 24){
+                                current = String.format("(%f %c %f) %c (%f %c %f)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
                                 retval += "s" + current;
-                                break;
                             }
-                            current = String.format("(%f %c %f %c %f) %c %f", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                            if (eval2(eval3(Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2]), Oper[l], Cbm[i][3]) == 24){
+                            else if (eval2(eval3(Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2]), Oper[l], Cbm[i][3]) == 24){
+                                current = String.format("(%f %c %f %c %f) %c %f", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
                                 retval += "s" + current;
-                                break;
                             }
-                            current = String.format("((%f %c %f) %c %f) %c %f", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                            if (eval2(eval2(eval2(Cbm[i][0], Oper[j], Cbm[i][1]), Oper[k], Cbm[i][2]), Oper[l], Cbm[i][3]) == 24){
+                            else if (eval2(eval2(eval2(Cbm[i][0], Oper[j], Cbm[i][1]), Oper[k], Cbm[i][2]), Oper[l], Cbm[i][3]) == 24){
+                                current = String.format("((%f %c %f) %c %f) %c %f", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
                                 retval += "s" + current;
-                                break;
                             }
-                            current = String.format("(%f %c (%f %c %f)) %c %f", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                            if (eval2(eval2(Cbm[i][0], Oper[j], eval2(Cbm[i][1], Oper[k], Cbm[i][2])), Oper[l], Cbm[i][3]) == 24){
+                            else if (eval2(eval2(Cbm[i][0], Oper[j], eval2(Cbm[i][1], Oper[k], Cbm[i][2])), Oper[l], Cbm[i][3]) == 24){
+                                current = String.format("(%f %c (%f %c %f)) %c %f", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
                                 retval += "s" + current;
-                                break;
                             }
-                            current = String.format("%f %c (%f %c %f %c %f)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                            if (eval2(Cbm[i][0], Oper[j], eval3(Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3])) == 24){
+                            else if (eval2(Cbm[i][0], Oper[j], eval3(Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3])) == 24){
+                                current = String.format("%f %c (%f %c %f %c %f)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
                                 retval += "s" + current;
-                                break;
                             }
-                            current = String.format("%f %c ((%f %c %f) %c %f)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                            if (eval2(Cbm[i][0], Oper[j], eval2(eval2(Cbm[i][1], Oper[k], Cbm[i][2]), Oper[l], Cbm[i][3])) == 24){
+                            else if (eval2(Cbm[i][0], Oper[j], eval2(eval2(Cbm[i][1], Oper[k], Cbm[i][2]), Oper[l], Cbm[i][3])) == 24){
+                                current = String.format("%f %c ((%f %c %f) %c %f)", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
                                 retval += "s" + current;
-                                break;
                             }
-                            current = String.format("%f %c (%f %c (%f %c %f))", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
-                            if (eval2(Cbm[i][0], Oper[j], eval2(Cbm[i][1], Oper[k], eval2(Cbm[i][2], Oper[l], Cbm[i][3]))) == 24){
+                            else if (eval2(Cbm[i][0], Oper[j], eval2(Cbm[i][1], Oper[k], eval2(Cbm[i][2], Oper[l], Cbm[i][3]))) == 24){
+                                current = String.format("%f %c (%f %c (%f %c %f))", Cbm[i][0], Oper[j], Cbm[i][1], Oper[k], Cbm[i][2], Oper[l], Cbm[i][3]);
                                 retval += "s" + current;
-                                break;
                             }
                         }
                     }
