@@ -6,48 +6,56 @@ public class Main{
 
         boolean running = true;
         String filename;
-        int control1;
-        int control2;
+        String inputLine;
+        String[] parsedInput;
+        int input;
         long startTime;
         long finishTime;
 
         while (running){
-            try{
-                control1 = 0;
-                control2 = 0;
+                input = 0;
                 startTime = 0;
                 finishTime = 0;
                 filename = "";
                 Card combination = new Card();
                 Op operation = new Op();
 
-                while (control1 < 1 || control1 > 3){
+                while (input < 1 || input > 3){
                     System.out.println("24 Solver");
                     System.out.println("Pilih cara:");
                     System.out.println("1. Input manual");
                     System.out.println("2. Randomly generated");
                     System.out.println("3. Exit");
-                    
-                    control1 = in.nextInt();
-                    control2 = 0;
+                        do{
+                            inputLine = in.nextLine();
+                            parsedInput = inputLine.split(" ");
+                            try {
+                                input = Integer.parseInt(parsedInput[0]);
+                            } catch (NumberFormatException e) {
+                                input = 0;
+                            }
+                            if (input <= 0 || input > 3) {
+                                System.out.println("Input tidak valid");
+                            } 
+                        } while (input <= 0 || input > 3);
 
-                    switch(control1){
-                        case 1:
-                        combination.readCards();
-                        break;
-    
-                        case 2:
-                        combination.randomCards();
-                        break;
+                        switch(input){
+                            case 1:
+                            combination.readCards();
+                            break;
+        
+                            case 2:
+                            combination.randomCards();
+                            break;
 
-                        case 3:
-                        running = false;
-                        break;
+                            case 3:
+                            running = false;
+                            break;
 
-                        default:
-                        System.out.println("Input Tidak Valid");
-                        break;
-                    }
+                            default:
+                            System.out.println("Input Tidak Valid");
+                            break;
+                        }
                 }
                 
                 if (running == true){
@@ -56,15 +64,28 @@ public class Main{
                     operation.getmodels(combination.Cbm);
                     finishTime = System.nanoTime() - startTime;
 
-                    try{
-                        while(control2 < 1 || control2 > 2){
-                            System.out.println("Selesai");
-                            System.out.println("Waktu eksekusi (milisekon): " + finishTime/1000000);
-                            System.out.println("Pilih output:");
-                            System.out.println("1. Terminal");
-                            System.out.println("2. File");
-                            control2 = in.nextInt();
-                            switch(control2){
+                        
+                        System.out.println("Selesai");
+                        System.out.println("Waktu eksekusi (milisekon): " + (double)finishTime /1000000);
+                        System.out.println("Pilih output:");
+                        System.out.println("1. Terminal");
+                        System.out.println("2. File");
+
+                            do{
+                                inputLine = in.nextLine();
+                                parsedInput = inputLine.split(" ");
+                                try {
+                                    input = Integer.parseInt(parsedInput[0]);
+                                } catch (NumberFormatException e) {
+                                    input = 0;
+                                }
+                                if (input <= 0 || input > 2) {
+                                    System.out.println("Input tidak valid");
+                                } 
+                            } while (input <= 0 || input > 2);
+
+
+                            switch(input){
                                 case 1:
                                 operation.printResult();
                                 break;
@@ -75,21 +96,17 @@ public class Main{
                                 filename = in.nextLine();
                                 operation.fileResult(filename);
                                 break;
-
+                                
                                 default:
-                                System.out.println("Input Tidak Valid");
-                                break;
+                            System.out.println("Input Tidak Valid");
+                            break;
                             }
-                        }
-                    } catch(Exception e){
-                        System.out.println(e);
-                    }
 
                     System.out.println("\n\n");
                 }
-            } catch(Exception e){
-                System.out.println(e);
-            }
-        } System.out.println("Program Selesai");        
+        }
+        
+        
+        System.out.println("Program Selesai");        
     }
 }
