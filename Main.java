@@ -34,6 +34,9 @@ public class Main{
                     switch(control1){
                         case 1:
                         combination.readCards();
+                        for(int i = 0; i < 4; i++){
+                            System.out.println(combination.Val[i]);
+                        }
                         break;
     
                         case 2:
@@ -53,7 +56,9 @@ public class Main{
                 if (running == true){
                     startTime = System.nanoTime();
                     combination.generateCbm();
+                    System.out.println("Here1");
                     operation.getmodels(combination.Cbm);
+                    System.out.println("Here2");
                     finishTime = System.nanoTime() - startTime;
 
                     try{
@@ -82,13 +87,13 @@ public class Main{
                             }
                         }
                     } catch(Exception e){
-                        System.out.println("Input tidak valid");
+                        System.out.println(e);
                     }
 
                     System.out.println("\n\n");
                 }
             } catch(Exception e){
-                System.out.println("Input tidak valid");
+                System.out.println(e);
             }
         } System.out.println("Program Selesai");        
     }

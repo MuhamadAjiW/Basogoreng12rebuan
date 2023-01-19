@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class Card {
     static Scanner in = new Scanner(System.in);
-    int[] Val = new int[4];
-    int[][] Cbm = new int[24][4];
+    float[] Val = new float[4];
+    float[][] Cbm = new float[24][4];
 
     public void readCards(){
         String line;
@@ -51,9 +51,11 @@ public class Card {
     public void randomCards(){
         Random randomNum = new Random();
         System.out.println("Kartu yang didapat: ");
+        int temp;
         for(int i = 0; i < 4; i++){
-            Val[i] = randomNum.nextInt(13) + 1;
-            switch(Val[i]){
+            temp = randomNum.nextInt(13) + 1;
+            Val[i] =((float)temp);
+            switch(temp){
                 case 1:
                 System.out.print("A ");
                 break;
@@ -67,7 +69,7 @@ public class Card {
                 System.out.print("K ");
                 break;
                 default:
-                System.out.print(String.format("%d ", Val[i]));
+                System.out.print(String.format("%d ", temp));
                 break;
             }
         }
