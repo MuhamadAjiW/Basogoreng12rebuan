@@ -123,7 +123,7 @@ public class Op {
                 bw.flush();
                 bw.close();
 
-                System.out.println("\nFile berhasil disimpan pada /results/" + fileOutput);
+                System.out.println("\n\n\nFile berhasil disimpan pada /results/" + fileOutput);
 
             } catch(Exception e){
                 System.out.println(e);
@@ -146,7 +146,7 @@ public class Op {
                 bw.flush();
                 bw.close();
 
-                System.out.println("\nFile berhasil disimpan pada /results/" + fileOutput);
+                System.out.println("\n\n\nFile berhasil disimpan pada /results/" + fileOutput);
 
             } catch(Exception e){
                 System.out.println(e);

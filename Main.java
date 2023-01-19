@@ -93,7 +93,6 @@ public class Main{
                                 case 2:    
                                 System.out.println("Masukkan nama file: ");
                                 filename = in.nextLine();
-                                filename = in.nextLine();
                                 operation.fileResult(filename);
                                 break;
                                 
