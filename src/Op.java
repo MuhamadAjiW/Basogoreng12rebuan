@@ -130,6 +130,11 @@ public class Op {
             }
         }
         else{
+            retval = retval.replace("10", "Temp");
+            retval = retval.replace("0", "");
+            retval = retval.replace(".", "");
+            retval = retval.replace("Temp", "10");
+
             retval = retval.replace("11", "J");
             retval = retval.replace("12", "Q");
             retval = retval.replace("13", "K");
