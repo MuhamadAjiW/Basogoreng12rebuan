@@ -101,6 +101,7 @@ public class Op {
             retval = retval.replace("12", "Q");
             retval = retval.replace("13", "K");
             retval = retval.replace("1 ", "A ");
+            retval = retval.replace("1)", "A ");
             String[] output = retval.split("s");
             System.out.println(String.format("Terdapat %d solusi:", output.length-1));
 
@@ -139,6 +140,7 @@ public class Op {
             retval = retval.replace("12", "Q");
             retval = retval.replace("13", "K");
             retval = retval.replace("1 ", "A ");
+            retval = retval.replace("1)", "A ");
             String[] output = retval.split("s");
 
             try{
