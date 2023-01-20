@@ -1,23 +1,18 @@
 import java.util.Random;
-import java.util.Scanner;
 
 public class Card {
-    static Scanner in = new Scanner(System.in);
+    InputHandler inputHandler = new InputHandler();
     float[] Val = new float[4];
     float[][] Cbm;
 
     public void readCards(){
-        String line;
-        String[] vals = new String[5];
+        String[] vals = new String[4];
         Boolean valid = false;
+
+        System.out.println("Masukkan 4 kombinasi kartu: ");
         while (!valid){
-            System.out.println("Masukkan 4 kombinasi kartu: ");
-            line = in.nextLine();
-            vals = line.split(" ");
+            vals = inputHandler.SpacedWords(4);
             try{
-                if (vals.length > 4){
-                    throw new Exception("Input terlalu banyak");
-                }
                 for(int i = 0; i < 4; i++){
                     switch(vals[i]){
                         case "A":
@@ -41,11 +36,11 @@ public class Card {
                     }
                 }
                 valid = true;
-            } catch(Exception e){
+            } catch (Exception e){
                 System.out.println("Input tidak valid!");
                 System.out.println(e+"\n");
             }
-        }   
+        }
     }
 
     public void randomCards(){
@@ -74,6 +69,18 @@ public class Card {
             }
         }
         System.out.print("\n");
+    }
+
+    public void generateCbmNHC(){
+        for(byte i = 0; i < 4; i++){
+
+        }
+    }
+
+    public void printCbm(){
+        for(int i = 0; i < 24; i++){
+            System.out.println(Cbm[i][0] + " " + Cbm[i][1] + " " + Cbm[i][2] + " " + Cbm[i][3]);
+        }
     }
 
     public void generateCbm(){
@@ -263,12 +270,6 @@ public class Card {
             Cbm[21][0] = Val[3]; Cbm[21][1] = Val[1]; Cbm[21][2] = Val[2]; Cbm[21][3] = Val[0];
             Cbm[22][0] = Val[3]; Cbm[22][1] = Val[2]; Cbm[22][2] = Val[0]; Cbm[22][3] = Val[1];
             Cbm[23][0] = Val[3]; Cbm[23][1] = Val[2]; Cbm[23][2] = Val[1]; Cbm[23][3] = Val[0];
-        }
-    }
-
-    public void printCbm(){
-        for(int i = 0; i < 24; i++){
-            System.out.println(Cbm[i][0] + " " + Cbm[i][1] + " " + Cbm[i][2] + " " + Cbm[i][3]);
         }
     }
 }
