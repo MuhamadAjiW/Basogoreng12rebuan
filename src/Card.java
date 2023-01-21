@@ -72,48 +72,70 @@ public class Card {
         System.out.print("\n");
     }
 
-    boolean isMember(int[] arr, int check){
-        boolean member = false;
+    boolean noDuplicate(int[] arr){
+        boolean retval = true;
+        int i, j;
+
+        i = 0;
+        while(retval && i < arr.length){
+            j = 0;
+            while(retval && j < i){
+                if(arr[j] == arr[i]){
+                    retval = false;
+                }
+                else{
+                    j++;
+                }
+            }
+            i++;
+        }
+        return retval;
+    }
+
+    boolean sameContent(float[] arr1, float[] arr2){
+        boolean retval = true;
         int i = 0;
-        while (i < arr.length && !member){
-            if(check == arr[i]){
-                member = true;
+        if(arr1.length != arr2.length){
+            retval = false;
+        }
+        while(retval && i < arr1.length){
+            if(arr1[i] != arr2[i]){
+                retval = false;
             }
             else{
                 i++;
             }
         }
-        return member;
+        return retval;
     }
 
-    Vector<float[]> cmbVector = new Vector<float[]>(1);
-    boolean noDuplicate(float[] array, int start, int current){
-        boolean retval = true;
-        for(int i = start; i < current; i++){
-            if(array[i] == array[current]){
-                retval = false;
+    boolean VectorContains(float[] arr){
+        boolean retval = false;
+        int i;
+        i = 0;
+        while(!retval && i < cmbVector.size()){
+            if(sameContent(arr, cmbVector.get(i))){
+                retval = true;
             }
+            i++;
         }
         return retval;
     }
+
+    Vector<float[]> cmbVector = new Vector<float[]>(1);
     void ValPermutation(int index){
-        float temp;
-        if (index == Val.length-1){
-            float[] getter = Val.clone();
-            cmbVector.add(getter);
-        }
-        else{
-            for(int i = index; i < Val.length; i++){
-                if (noDuplicate(Val, index, i)){
-                    temp = Val[i];
-                    Val[i] = Val[index];
-                    Val[index] = temp;
-                    
-                    ValPermutation(index + 1);
-                    
-                    temp = Val[index];
-                    Val[index] = Val[i];
-                    Val[i] = temp;
+        for(int i = 0; i < 4; i++){
+            for(int j = 0; j < 4; j++){
+                for(int k = 0; k < 4; k++){
+                    for (int l = 0; l < 4; l++){
+                        int[]permutation = {i, j, k, l};
+                        if(noDuplicate(permutation)){
+                            float[] getter = {Val[permutation[0]], Val[permutation[1]], Val[permutation[2]], Val[permutation[3]]};
+                            if(!VectorContains(getter)){
+                                cmbVector.add(getter);
+                            }
+                        }
+                    }
                 }
             }
         }
