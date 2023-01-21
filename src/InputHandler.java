@@ -22,7 +22,7 @@ public class InputHandler{
             }
             else{
                 retval = bottomLimit - 1;
-                System.out.println("Input terlalu banyak");
+                System.out.println("Jumlah input tidak valid");
             }
         } while (retval < bottomLimit || retval > upperLimit);
         return retval;
@@ -37,7 +37,7 @@ public class InputHandler{
                 valid = true;
             }
             else{
-                System.out.println("Input terlalu banyak");
+                System.out.println("Jumlah input tidak valid");
             }
         } while (!valid);
         return parsedInput;

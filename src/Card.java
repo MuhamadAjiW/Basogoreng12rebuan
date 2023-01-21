@@ -4,6 +4,7 @@ import java.util.Vector;
 public class Card {
     InputHandler inputHandler = new InputHandler();
     float[] Val = new float[4];
+    Vector<float[]> cmbVector = new Vector<float[]>(1);
     float[][] Cbm;
 
     public void readCards(){
@@ -122,7 +123,6 @@ public class Card {
         return retval;
     }
 
-    Vector<float[]> cmbVector = new Vector<float[]>(1);
     void ValPermutation(int index){
         for(int i = 0; i < 4; i++){
             for(int j = 0; j < 4; j++){
