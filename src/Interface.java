@@ -43,7 +43,6 @@ public class Interface{
                     combination.generateCbm();
                     operation.getmodels(combination.Cbm);
                     finishTime = System.nanoTime() - startTime;
-
                         
                     System.out.println("Selesai");
                     System.out.println("Waktu eksekusi (milisekon): " + (double)finishTime /1000000);

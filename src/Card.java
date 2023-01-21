@@ -4,7 +4,7 @@ import java.util.Vector;
 public class Card {
     InputHandler inputHandler = new InputHandler();
     float[] Val = new float[4];
-    Vector<float[]> cmbVector = new Vector<float[]>(1);
+    Vector<float[]> cbmVector = new Vector<float[]>(1);
     float[][] Cbm;
 
     public void readCards(){
@@ -114,8 +114,8 @@ public class Card {
         boolean retval = false;
         int i;
         i = 0;
-        while(!retval && i < cmbVector.size()){
-            if(sameContent(arr, cmbVector.get(i))){
+        while(!retval && i < cbmVector.size()){
+            if(sameContent(arr, cbmVector.get(i))){
                 retval = true;
             }
             i++;
@@ -132,7 +132,7 @@ public class Card {
                         if(noDuplicate(permutation)){
                             float[] getter = {Val[permutation[0]], Val[permutation[1]], Val[permutation[2]], Val[permutation[3]]};
                             if(!VectorContains(getter)){
-                                cmbVector.add(getter);
+                                cbmVector.add(getter);
                             }
                         }
                     }
@@ -143,9 +143,9 @@ public class Card {
 
     public void generateCbm(){
         ValPermutation(0);
-        Cbm = new float[cmbVector.size()][4];
-        for(int i = 0; i < cmbVector.size(); i++){
-            Cbm[i] = cmbVector.get(i);
+        Cbm = new float[cbmVector.size()][4];
+        for(int i = 0; i < cbmVector.size(); i++){
+            Cbm[i] = cbmVector.get(i);
         }
     }
 }
