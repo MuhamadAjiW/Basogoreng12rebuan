@@ -116,7 +116,7 @@ public class Op {
 
         if(retval.length() == 0){
             try{
-                BufferedWriter bw = new BufferedWriter(new FileWriter("./results/" + fileOutput));
+                BufferedWriter bw = new BufferedWriter(new FileWriter("./test/" + fileOutput));
 
                 bw.write("Tidak ada solusi");
                 bw.newLine();
@@ -124,7 +124,7 @@ public class Op {
                 bw.flush();
                 bw.close();
 
-                System.out.println("\n\n\nFile berhasil disimpan pada /results/" + fileOutput);
+                System.out.println("\n\n\nFile berhasil disimpan pada /test/" + fileOutput);
 
             } catch(Exception e){
                 System.out.println(e);
