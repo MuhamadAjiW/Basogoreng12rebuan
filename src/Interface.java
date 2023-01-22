@@ -1,5 +1,4 @@
 public class Interface{
-
     public void run(){
 
         boolean running = true;
