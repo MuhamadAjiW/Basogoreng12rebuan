@@ -40,7 +40,7 @@ public class Interface{
                 if (running == true){
                     startTime = System.nanoTime();
                     combination.generateCbm();
-                    operation.getmodels(combination.Cbm);
+                    operation.getmodels(combination.cbmVector);
                     finishTime = System.nanoTime() - startTime;
                         
                     System.out.println("Selesai");

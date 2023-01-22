@@ -5,12 +5,10 @@ public class Card {
     InputHandler inputHandler = new InputHandler();
     float[] Val = new float[4];
     Vector<float[]> cbmVector = new Vector<float[]>(1);
-    float[][] Cbm;
 
     public void readCards(){
         String[] vals = new String[4];
         Boolean valid = false;
-
         System.out.println("Masukkan 4 kombinasi kartu: ");
         while (!valid){
             vals = inputHandler.SpacedWords(4);
@@ -73,25 +71,6 @@ public class Card {
         System.out.print("\n");
     }
 
-    boolean noDuplicate(byte[] arr){
-        boolean retval = true;
-        byte i, j;
-        i = 0;
-        while(retval && i < arr.length){
-            j = 0;
-            while(retval && j < i){
-                if(arr[j] == arr[i]){
-                    retval = false;
-                }
-                else{
-                    j++;
-                }
-            }
-            i++;
-        }
-        return retval;
-    }
-
     boolean sameContent(float[] arr1, float[] arr2){
         boolean retval = true;
         byte i = 0;
@@ -101,8 +80,7 @@ public class Card {
         while(retval && i < arr1.length){
             if(arr1[i] != arr2[i]){
                 retval = false;
-            }
-            else{
+            } else{
                 i++;
             }
         }
@@ -125,13 +103,16 @@ public class Card {
     void ValPermutation(int index){
         for(byte i = 0; i < 4; i++){
             for(byte j = 0; j < 4; j++){
-                for(byte k = 0; k < 4; k++){
-                    for (byte l = 0; l < 4; l++){
-                        byte[]permutation = {i, j, k, l};
-                        if(noDuplicate(permutation)){
-                            float[] getter = {Val[permutation[0]], Val[permutation[1]], Val[permutation[2]], Val[permutation[3]]};
-                            if(!VectorContains(getter)){
-                                cbmVector.add(getter);
+                if(j!=i){
+                    for(byte k = 0; k < 4; k++){
+                        if(k!=i && k!=j){
+                            for (byte l = 0; l < 4; l++){
+                                if(l!=i && l!=j && l!=k){
+                                    float[] getter = {Val[i], Val[j], Val[k], Val[l]};
+                                    if(!VectorContains(getter)){
+                                        cbmVector.add(getter);
+                                    }
+                                }
                             }
                         }
                     }
@@ -142,9 +123,5 @@ public class Card {
 
     public void generateCbm(){
         ValPermutation(0);
-        Cbm = new float[cbmVector.size()][4];
-        for(byte i = 0; i < cbmVector.size(); i++){
-            Cbm[i] = cbmVector.get(i);
-        }
     }
 }
