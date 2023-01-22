@@ -144,7 +144,7 @@ public class Op {
             String[] output = retval.split("s");
 
             try{
-                BufferedWriter bw = new BufferedWriter(new FileWriter("./results/" + fileOutput));
+                BufferedWriter bw = new BufferedWriter(new FileWriter("./test/" + fileOutput));
 
                 for(int i = 1; i < output.length; i++){
                     bw.write(output[i]);
@@ -153,7 +153,7 @@ public class Op {
                 bw.flush();
                 bw.close();
 
-                System.out.println("\n\n\nFile berhasil disimpan pada /results/" + fileOutput);
+                System.out.println("\n\n\nFile berhasil disimpan pada /test/" + fileOutput);
 
             } catch(Exception e){
                 System.out.println(e);
