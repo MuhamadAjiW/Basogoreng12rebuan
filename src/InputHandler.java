@@ -72,15 +72,14 @@ public class InputHandler{
                         default:
                             Val[i] = Integer.parseInt(vals[i]);
                             if (Val[i] < 2 || Val[i] > 10){
-                                throw new Exception("Ada kartu < 2 atau > 10 (Gunakan A, J, Q, K)");
+                                throw new Exception("");
                             }
                             break;
                     }
                 }
                 valid = true;
             } catch (Exception e){
-                System.out.println("Input tidak valid!");
-                System.out.println(e+"\n");
+                System.out.println("Input tidak valid");
             }
         }
         return Val;
