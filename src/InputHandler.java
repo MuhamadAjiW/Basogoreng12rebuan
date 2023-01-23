@@ -46,4 +46,43 @@ public class InputHandler{
     String StringLine(){
         return in.nextLine();
     }
+
+
+    float[] CardCombination(){
+        boolean valid = false;
+        String[] vals;
+        float[] Val = new float[4];
+        while (!valid){
+            vals = SpacedWords(4);
+            try{
+                for(byte i = 0; i < 4; i++){
+                    switch(vals[i]){
+                        case "A":
+                            Val[i] = 1;
+                            break;
+                        case "J":
+                            Val[i] = 11;
+                            break;
+                        case "Q":
+                            Val[i] = 12;
+                            break;
+                        case "K":
+                            Val[i] = 13;
+                            break;
+                        default:
+                            Val[i] = Integer.parseInt(vals[i]);
+                            if (Val[i] < 2 || Val[i] > 10){
+                                throw new Exception("Ada kartu < 2 atau > 10 (Gunakan A, J, Q, K)");
+                            }
+                            break;
+                    }
+                }
+                valid = true;
+            } catch (Exception e){
+                System.out.println("Input tidak valid!");
+                System.out.println(e+"\n");
+            }
+        }
+        return Val;
+    }
 }

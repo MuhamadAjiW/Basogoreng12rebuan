@@ -12,9 +12,11 @@ public class Interface{
                 startTime = 0;
                 finishTime = 0;
                 filename = "";
-                Card combination = new Card();
+                Card cards = new Card();
                 Op operation = new Op();
                 InputHandler inputHandler = new InputHandler();
+                OutputHandler outputHandler = new OutputHandler();
+                Permutation cardPermutation = new Permutation();
 
                 System.out.println("24 Solver");
                 System.out.println("Pilih cara:");
@@ -25,11 +27,13 @@ public class Interface{
 
                 switch(input){
                     case 1:
-                    combination.readCards();
+                    System.out.println("Masukkan 4 kombinasi kartu: ");
+                    cards.readCards(inputHandler.CardCombination());
                     break;
 
                     case 2:
-                    combination.randomCards();
+                    System.out.println("Kartu yang didapat: ");
+                    cards.randomCards();
                     break;
 
                     case 3:
@@ -39,8 +43,8 @@ public class Interface{
                 
                 if (running == true){
                     startTime = System.nanoTime();
-                    combination.generateCbm();
-                    operation.getmodels(combination.cbmVector);
+                    cardPermutation.GeneratePermutation(cards.Val);
+                    operation.getmodels(cardPermutation.cbmVector);
                     finishTime = System.nanoTime() - startTime;
                         
                     System.out.println("Selesai");
@@ -52,13 +56,13 @@ public class Interface{
 
                     switch(input){
                         case 1:
-                        operation.printResult();
+                        outputHandler.printResult(operation.retval);
                         break;
                                 
                         case 2:    
                         System.out.println("Masukkan nama file: ");
                         filename = inputHandler.StringLine();
-                        operation.fileResult(filename);
+                        outputHandler.fileResult(filename, operation.retval);
                         break;
                     }
 
